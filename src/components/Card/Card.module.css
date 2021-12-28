@@ -1,14 +1,33 @@
 
-.Card{
-    background: #79B4B7;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    border-radius: 10px;
-    width: 50%;
-    margin: auto auto 5px auto;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;}
+    .Card {
+        background: #79B4B7;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        border-radius: 10px;
+        width: 60%;
+        margin: auto auto 5px auto;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+
+@media screen and (max-width: 426px) {
+    .Card {
+
+        width: 70%;
+        margin: auto auto 5px auto;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+
 

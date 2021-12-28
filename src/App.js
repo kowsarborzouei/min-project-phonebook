@@ -107,7 +107,7 @@ function App() {
                 </div>
 
                 {usersList.filter(item=>item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item )=> (
-                    <Card key={item.id} onClick={()=>setUser(item)}>
+                    <Card key={item.id} >
                         <div className={'img--input'}>
                             <img className={"img--card"} src={item.img}/>
                             <div>
