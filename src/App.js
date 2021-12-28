@@ -2,7 +2,11 @@ import './App.css';
 import profile from '../src/images/img.png';
 import Search from "./components/search/Search";
 import Card from "./components/Card/Card";
-import kowsar from './images/kowsar.jpg'
+import kowsar from './images/kowsar.jpg';
+import img_1 from  './images/img_1.png'
+import img2 from './images/img2.png';
+import img_2 from './images/img_2.png';
+import img_3 from './images/img_3.png'
 import {useState} from "react";
 
 
@@ -21,19 +25,35 @@ function App() {
         },
         {
             id: 2,
-            img: kowsar,
-            firstName: "kowsar",
-            lastName: "Borzuei",
-            phone: "09150619413",
+            img: img2,
+            firstName: "Narges",
+            lastName: "Javan",
+            phone: "09130000000",
             email: "k.borzuei@gamil.com"
         },
         {
             id: 3,
-            img: kowsar,
-            firstName: "kowsar",
-            lastName: "Borzuei",
-            phone: "09150619413",
-            email: "k.borzuei@gamil.com"
+            img: img_1,
+            firstName: "Zahra",
+            lastName: "Amini",
+            phone: "09170000000",
+            email: "a.dosti@gamil.com"
+        },
+        {
+            id: 4,
+            img: img_2,
+            firstName: "Sima",
+            lastName: "Sohrab",
+            phone: "09130000000",
+            email: "s.sohrab@gamil.com"
+        },
+        {
+            id: 5,
+            img: img_3,
+            firstName: "Shahrzad",
+            lastName: "Miri",
+            phone: "09150000000",
+            email: "sh.miri@gamil.com",
         },
     ]
     const [usersList, setUsersList] = useState(users)
@@ -74,17 +94,20 @@ function App() {
                        onChange={changeHandler}/>
                 <input placeholder={"Last Name"} type={"text"} name={'lastName'} value={user.lastName}
                        onChange={changeHandler}/>
-                <input placeholder={"Phone Number"} type={"text"} name={'phone'} value={user.phone}
+                <input required={''} placeholder={"Phone Number"} type={"text"} name={'phone'} value={user.phone}
                        onChange={changeHandler}/>
                 <input placeholder={"Email"} type={"email"} name={'email'} value={user.email} onChange={changeHandler}/>
-                <input type={"submit"} value={mood}/>
+                <button className={"buttonForm"} type={"submit"}>{mood}</button>
             </form>
 
             <div className={"output"}>
-                <Search filter={filter} setFilter={setFilter}/>
-                {/*{usersList.filter(item=>item.name.toLowerCase().includes(filter.toLowerCase()))}*/}
-                {usersList.map((item )=> (
-                    <Card key={item.id}>
+                <div className={"titleSearch"}>
+                    <h1>Phone Book</h1>
+                    <Search filter={filter} setFilter={setFilter}/>
+                </div>
+
+                {usersList.filter(item=>item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item )=> (
+                    <Card key={item.id} onClick={()=>setUser(item)}>
                         <div className={'img--input'}>
                             <img className={"img--card"} src={item.img}/>
                             <div>
@@ -100,6 +123,7 @@ function App() {
                         </div>
                     </Card>
                 ))}
+
             </div>
         </div>
 

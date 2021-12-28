@@ -5,15 +5,23 @@
 }
 .input{
     grid-area: input;
-    background: aqua;
+    background: #F8F0DF;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+
+}
+input{
+    background: transparent;
+    outline: none;
+    border: 0;
+    width: 15rem;
+    border-bottom: 1px solid #9D9D9D;
 }
 .output{
     grid-area: output;
-    background: gray;
+    background: #FEFBF3;
     overflow-y: scroll;
 
 }
@@ -24,11 +32,12 @@
 }
 img{
     border-radius: 100%;
+    object-fit: cover;
 }
 .img--card{
     width: 5rem;
     height: 5rem;
-    border: 1px solid palevioletred;
+    border: 1px solid #F8F0DF;
     margin-right: 10px;
 }
 .img--fix{
@@ -39,4 +48,25 @@ img{
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.titleSearch{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttonForm{
+    width: 8rem;
+    height: 2rem;
+    border: 0;
+    color:#37474F ;
+    background: #79B4B7;
+}
+button{
+    width: 5rem;
+    height: 1.5rem;
+    border: 0;
+}
+button:first-child{
+    margin-bottom: 5px;
 }
