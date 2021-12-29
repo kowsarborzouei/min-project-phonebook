@@ -69,7 +69,17 @@ function App() {
     const addHandler = (e) => {
         e.preventDefault();
         console.log(user.firstName)
-        // user.map(user=>user.firstName.trim().length === 0 || user.lastName.trim().length === 0 || user.email.trim().length === 0 || user.phone.trim().length === 0)
+
+        // for(let i=0;i<Object.values(user).length;i++){
+        //     const valueUser=Object.values(user)
+        //     if(valueUser[i].trim().length===0){
+        //         setError({
+        //             title:"Invalid input",
+        //             message:"please enter a valid for inputs",
+        //         })
+        //         return;
+        //     }
+        // }
         if (e.target.firstName.value.trim().length === 0 || e.target.lastName.value.trim().length === 0) {
             setError({
                 title:"Invalid input",
@@ -84,6 +94,7 @@ function App() {
             })
             return ;
         }
+
         if (mood == 'Update') {
             setUsersList(usersList.map(item => user.id === item.id ? user : item))
         } else {

@@ -9,7 +9,7 @@ function ErrorModal(props){
                     <h2>{props.title}</h2>
                 </header>
                 <div className={classes.content}>
-                    <p>{props.message}</p>
+                    <h4>{props.message}</h4>
                 </div>
                 <footer className={classes.actions}>
                     <button className={classes.buttonError} onClick={props.onConfirm}>Okey</button>
