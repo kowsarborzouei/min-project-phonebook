@@ -68,12 +68,21 @@ function App() {
     }
     const addHandler = (e) => {
         e.preventDefault();
-        if (e.target.firstName.value.trim.length === 0) {
+        console.log(user.firstName)
+        // user.map(user=>user.firstName.trim().length === 0 || user.lastName.trim().length === 0 || user.email.trim().length === 0 || user.phone.trim().length === 0)
+        if (e.target.firstName.value.trim().length === 0) {
             setError({
                 title:"Invalid input",
-                message:"please enter a valid for inputs",
+                message:"please enter a valid for ّfirstName",
             })
-            return;
+            return ;
+        }
+        if (e.target.phone.value.trim().length !== 11) {
+            setError({
+                title:"Invalid input",
+                message:"please enter a valid for phone with 11 digits ",
+            })
+            return ;
         }
         if (mood == 'Update') {
             setUsersList(usersList.map(item => user.id === item.id ? user : item))
