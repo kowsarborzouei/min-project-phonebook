@@ -19,6 +19,8 @@ input{
     width: 14rem;
     border-bottom: 1px solid #9D9D9D;
     font-size: 15px;
+    color: #37474F;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .output{
     grid-area: output;
@@ -50,6 +52,7 @@ img{
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: #263238;
 }
 .titleSearch{
     display: flex;
@@ -64,6 +67,7 @@ img{
     color:#37474F ;
     background: #79B4B7;
     cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .buttonForm:hover,button:hover{
     background: #FEFBF3;
@@ -75,9 +79,14 @@ button{
     background: #F8F0DF;
     color: #37474F;
     cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 5px;
 }
 button:first-child{
     margin-bottom: 5px;
+}
+h1{
+    color: #37474F;
 }
 @media screen and (max-width: 426px){
     .App{

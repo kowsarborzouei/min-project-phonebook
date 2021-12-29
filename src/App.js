@@ -70,10 +70,10 @@ function App() {
         e.preventDefault();
         console.log(user.firstName)
         // user.map(user=>user.firstName.trim().length === 0 || user.lastName.trim().length === 0 || user.email.trim().length === 0 || user.phone.trim().length === 0)
-        if (e.target.firstName.value.trim().length === 0) {
+        if (e.target.firstName.value.trim().length === 0 || e.target.lastName.value.trim().length === 0) {
             setError({
                 title:"Invalid input",
-                message:"please enter a valid for ّfirstName",
+                message:"please enter a valid for ّfirstName or lastName",
             })
             return ;
         }
@@ -136,7 +136,7 @@ function App() {
                                 <img className={"img--card"} src={item.img}/>
                                 <div>
                                     {item.firstName}{item.lastName}
-                                    <div>
+                                    <div><br/>
                                         {item.phone}
                                     </div>
                                 </div>
