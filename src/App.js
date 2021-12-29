@@ -61,24 +61,30 @@ function App() {
     const [mood, setMood] = useState('Create')
     const [filter, setFilter] = useState('')
     const [error, setError] = useState()
+
     const deleteHandler = (id) => {
 
         setUsersList(usersList.filter(item => item.id !== id))
     }
     const addHandler = (e) => {
         e.preventDefault();
-        console.log(e.target.firstName.value)
-        // if (e.target.firstName.value.trim.length === 0) {
-        //     return;
-        // }
+        if (e.target.firstName.value.trim.length === 0) {
+            setError({
+                title:"Invalid input",
+                message:"please enter a valid for inputs",
+            })
+            return;
+        }
         if (mood == 'Update') {
             setUsersList(usersList.map(item => user.id === item.id ? user : item))
         } else {
             setUsersList([...usersList, {id: Math.random().toString(), ...user}])
         }
-
         setUser({img: newAvatar, firstName: '', lastName: '', phone: '', email: ''})
         setMood('Create')
+    }
+    const errorHandler=()=>{
+        setError(null)
     }
 
 
@@ -93,7 +99,7 @@ function App() {
     return (
         <div>
             {/**************************ErrorModal**************************/}
-            {/*{error && <ErrorModal title={error.title} message={error.message}/>}*/}
+            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
             <div className="App">
                 <form onSubmit={addHandler} className={"input"}>
                     <img className={"img--fix"} src={newAvatar} name={'img'} value={user.img} onChange={changeHandler}
