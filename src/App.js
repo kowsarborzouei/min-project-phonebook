@@ -68,10 +68,8 @@ function App() {
     }
     const addHandler = (e) => {
         e.preventDefault();
-        console.log(user.firstName)
-
+        // const valueUser=Object.values(user)
         // for(let i=0;i<Object.values(user).length;i++){
-        //     const valueUser=Object.values(user)
         //     if(valueUser[i].trim().length===0){
         //         setError({
         //             title:"Invalid input",
