@@ -122,7 +122,7 @@ function App() {
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
             <div className="App">
                 <form onSubmit={addHandler} className={"input"}>
-                    <img className={"img--fix"} src={newAvatar} name={'img'} value={user.img} onChange={changeHandler}
+                    <img className={"img--fix"} src={user.img} name={'img'} value={user.img} onChange={changeHandler}
                          alt={'pro'}/>
                     <input placeholder={'First Name'} type={"text"} name={'firstName'} value={user.firstName}
                            onChange={changeHandler}/>
