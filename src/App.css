@@ -1,7 +1,8 @@
 .App{
     display: grid;
-    grid-template: 100vh/1fr 3fr;
-    grid-template-areas: "input output";
+    grid-template: 95vh 5vh/1fr 3fr;
+    grid-template-areas: "input output"
+                          "footer footer";
 }
 .input{
     grid-area: input;
@@ -28,11 +29,24 @@ input{
     overflow-y: scroll;
 
 }
+.footer{
+    grid-area: footer;
+    background: #FAFAFA;
+}
 .button--du{
     display: flex;
     flex-direction: column;
     align-items: stretch;
 
+}
+p{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: center;
+    bottom: 0;
+    color: #37474F;
+    font-size: 0.9em;
 }
 img{
     border-radius: 100%;
@@ -68,6 +82,7 @@ img{
     background: #79B4B7;
     cursor: pointer;
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
 }
 .buttonForm:hover,button:hover{
     background: #FEFBF3;
@@ -90,9 +105,10 @@ h1{
 }
 @media screen and (max-width: 426px){
     .App{
-        grid-template:1fr 1fr/auto;
+        grid-template:1fr 1fr 5vh/auto;
         grid-template-areas:"output"
-                             "input";
+                             "input"
+                               "footer";
     }
     .button--du{
         flex-direction: row;
@@ -106,4 +122,8 @@ h1{
         flex-direction: column;
         align-items: center;
     }
+    p{
+        font-size: 0.7em;
+    }
+
 }

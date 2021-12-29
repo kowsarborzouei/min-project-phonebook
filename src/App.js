@@ -154,8 +154,11 @@ function App() {
                             </div>
                         </Card>
                     ))}
-
                 </div>
+                <div className={"footer"}>
+                    <p>The first mini-project React Js. "<a href={"https://daneshkar.net/"}> Daneshkar </a>"</p>
+                </div>
+
             </div>
         </div>
 
