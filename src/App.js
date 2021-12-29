@@ -70,7 +70,7 @@ function App() {
         console.log(e.target.firstName.value)
         // if (e.target.firstName.value.trim.length === 0) {
         //     return;
-        // }else {
+        // }
         if (mood == 'Update') {
             setUsersList(usersList.map(item => user.id === item.id ? user : item))
         } else {
@@ -78,9 +78,10 @@ function App() {
         }
 
         setUser({img: newAvatar, firstName: '', lastName: '', phone: '', email: ''})
-        setMood('Create')}
+        setMood('Create')
+    }
 
-    // }
+
     const changeHandler = (e) => {
         // console.log(e.target.name)
         // console.log(e.target.value)
@@ -91,6 +92,7 @@ function App() {
 
     return (
         <div>
+            {/**************************ErrorModal**************************/}
             {/*{error && <ErrorModal title={error.title} message={error.message}/>}*/}
             <div className="App">
                 <form onSubmit={addHandler} className={"input"}>
