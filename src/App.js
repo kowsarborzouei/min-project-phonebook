@@ -8,6 +8,7 @@ import avatar2 from './images/Zahra.png';
 import avatar3 from './images/Narges.png';
 import avatar4 from './images/Sima.png';
 import avatar5 from './images/Shahrzad.png';
+
 import {useState} from "react";
 
 
@@ -56,11 +57,20 @@ function App() {
             email: "sh.miri@gamil.com",
         },
     ]
+    const emptyUser={img: newAvatar, firstName: '', lastName: '', phone: '', email: ''}
     const [usersList, setUsersList] = useState(users)
-    const [user, setUser] = useState({img: newAvatar, firstName: '', lastName: '', phone: '', email: ''})
+    const [user, setUser] = useState(emptyUser)
     const [mood, setMood] = useState('Create')
     const [filter, setFilter] = useState('')
     const [error, setError] = useState()
+
+    const objInput = [
+        {type: 'test', placeholder: 'First Name', name: 'firstName', value: user.firstName},
+        {type: 'test', placeholder: 'Last Name', name: 'lastName', value: user.lastName},
+        {type: 'test', placeholder: 'Phone Number', name: 'phone', value: user.phone},
+        {type: 'test', placeholder: 'Email', name: 'email', value: user.email}
+    ]
+
 
     const deleteHandler = (id) => {
 
@@ -68,7 +78,7 @@ function App() {
     }
     const addHandler = (e) => {
         e.preventDefault();
-        const valueUser=Object.values(user)
+        const valueUser = Object.values(user)
         // console.log(valueUser)
         // for (const [key] of Object.entries(user)){
         //     console.log(`${key}`)
@@ -85,28 +95,28 @@ function App() {
         // }
         if (e.target.firstName.value.trim().length === 0 || e.target.lastName.value.trim().length === 0) {
             setError({
-                title:"Invalid input",
-                message:"please enter a valid for ّfirstName or lastName",
+                title: "Invalid input",
+                message: "please enter a valid for ّfirstName or lastName",
             })
-            return ;
+            return;
         }
-        if (e.target.phone.value.trim().length !== 11) {
+        if (e.target.phone.value.trim().length !== 11 || +e.target.phone.value < 1) {
             setError({
-                title:"Invalid input",
-                message:"please enter a valid for phone with 11 digits ",
+                title: "Invalid input",
+                message: "please enter a valid for phone with 11 digits ",
             })
-            return ;
+            return;
         }
 
-        if (mood == 'Update') {
+        if (mood === 'Update') {
             setUsersList(usersList.map(item => user.id === item.id ? user : item))
         } else {
             setUsersList([...usersList, {id: Math.random().toString(), ...user}])
         }
-        setUser({img: newAvatar, firstName: '', lastName: '', phone: '', email: ''})
+        setUser(emptyUser)
         setMood('Create')
     }
-    const errorHandler=()=>{
+    const errorHandler = () => {
         setError(null)
     }
 
@@ -124,52 +134,56 @@ function App() {
             {/**************************ErrorModal**************************/}
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
             <div className="App">
+
                 <form onSubmit={addHandler} className={"input"}>
                     <img className={"img--fix"} src={user.img} name={'img'} value={user.img} onChange={changeHandler}
                          alt={'pro'}/>
 
-                    <input placeholder={'First Name'} type={"text"} name={'firstName'} value={user.firstName}
-                           onChange={changeHandler}/>
-                    <input placeholder={"Last Name"} type={"text"} name={'lastName'} value={user.lastName}
-                           onChange={changeHandler}/>
-                    <input required={''} placeholder={"Phone Number"} type={"text"} name={'phone'} value={user.phone}
-                           onChange={changeHandler}/>
-                    <input placeholder={"Email"} type={"email"} name={'email'} value={user.email}
-                           onChange={changeHandler}/>
+                    {/*<input placeholder={'First Name'} type={"text"} name={'firstName'} value={user.firstName}*/}
+                    {/*       onChange={changeHandler}/>*/}
+                    {/*<input placeholder={"Last Name"} type={"text"} name={'lastName'} value={user.lastName}*/}
+                    {/*       onChange={changeHandler}/>*/}
+                    {/*<input required={''} placeholder={"Phone Number"} type={"text"} name={'phone'} value={user.phone}*/}
+                    {/*       onChange={changeHandler}/>*/}
+                    {/*<input placeholder={"Email"} type={"email"} name={'email'} value={user.email}*/}
+                    {/*       onChange={changeHandler}/>*/}
+                    {objInput.map((item) => (
+                        <input key={Math.random()} type={item.type} placeholder={item.placeholder} name={item.name} value={item.value}
+                               onChange={changeHandler}/>
+                    ))}
                     <button className={"buttonForm"} type={"submit"}>{mood}</button>
                 </form>
-
                 <div className={"output"}>
                     <div className={"titleSearch"}>
                         <h1>Phone Book</h1>
                         <Search filter={filter} setFilter={setFilter}/>
                     </div>
-                    {usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).length===0 ?
-                        <h3>There is no user whit this firstname</h3>:
-                    usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item) => (
-                        <Card key={item.id}>
-                            <div className={'img--input'}>
-                                <img className={"img--card"} src={item.img}/>
-                                <div>
-                                    {item.firstName}{item.lastName}
-                                    <div><br/>
-                                        {item.phone}
+                    {usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).length === 0 ?
+                        <h3>There is no user whit this firstname</h3> :
+                        usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item) => (
+                            <Card key={item.id}>
+                                <div className={'img--input'}>
+                                    <img className={"img--card"} src={item.img}/>
+                                    <div>
+                                        {item.firstName}{item.lastName}
+                                        <div><br/>
+                                            {item.phone}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={"button--du"}>
-                                <button onClick={() => {
-                                    setUser(item);
-                                    setMood('Update')
-                                }}>Update
-                                </button>
-                                <button onClick={() => {
-                                    deleteHandler(item.id)
-                                }}>Delete
-                                </button>
-                            </div>
-                        </Card>
-                    ))}
+                                <div className={"button--du"}>
+                                    <button onClick={() => {
+                                        setUser(item);
+                                        setMood('Update')
+                                    }}>Update
+                                    </button>
+                                    <button onClick={() => {
+                                        deleteHandler(item.id)
+                                    }}>Delete
+                                    </button>
+                                </div>
+                            </Card>
+                        ))}
                 </div>
                 <div className={"footer"}>
                     <p>The first mini-project React Js. "<a href={"https://daneshkar.net/"}> Daneshkar </a>"</p>
