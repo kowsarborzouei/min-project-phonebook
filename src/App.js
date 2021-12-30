@@ -145,7 +145,7 @@ function App() {
                         <Search filter={filter} setFilter={setFilter}/>
                     </div>
                     {usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).length===0 ?
-                        <h2>There is no user whit this firstname</h2>:
+                        <h3>There is no user whit this firstname</h3>:
                     usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item) => (
                         <Card key={item.id}>
                             <div className={'img--input'}>
