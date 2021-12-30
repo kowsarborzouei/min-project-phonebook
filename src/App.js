@@ -78,7 +78,7 @@ function App() {
     }
     const addHandler = (e) => {
         e.preventDefault();
-        const valueUser = Object.values(user)
+        // const valueUser = Object.values(user)
         // console.log(valueUser)
         // for (const [key] of Object.entries(user)){
         //     console.log(`${key}`)
