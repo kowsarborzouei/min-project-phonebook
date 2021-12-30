@@ -68,7 +68,12 @@ function App() {
     }
     const addHandler = (e) => {
         e.preventDefault();
-        // const valueUser=Object.values(user)
+        const valueUser=Object.values(user)
+        // console.log(valueUser)
+        // for (const [key] of Object.entries(user)){
+        //     console.log(`${key}`)
+        // }
+
         // for(let i=0;i<Object.values(user).length;i++){
         //     if(valueUser[i].trim().length===0){
         //         setError({
@@ -122,6 +127,7 @@ function App() {
                 <form onSubmit={addHandler} className={"input"}>
                     <img className={"img--fix"} src={user.img} name={'img'} value={user.img} onChange={changeHandler}
                          alt={'pro'}/>
+
                     <input placeholder={'First Name'} type={"text"} name={'firstName'} value={user.firstName}
                            onChange={changeHandler}/>
                     <input placeholder={"Last Name"} type={"text"} name={'lastName'} value={user.lastName}
@@ -138,8 +144,9 @@ function App() {
                         <h1>Phone Book</h1>
                         <Search filter={filter} setFilter={setFilter}/>
                     </div>
-
-                    {usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item) => (
+                    {usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).length===0 ?
+                        <h2>There is no user whit this firstname</h2>:
+                    usersList.filter(item => item.firstName.toLowerCase().includes(filter.toLowerCase())).map((item) => (
                         <Card key={item.id}>
                             <div className={'img--input'}>
                                 <img className={"img--card"} src={item.img}/>

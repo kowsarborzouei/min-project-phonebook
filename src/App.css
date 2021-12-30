@@ -33,6 +33,10 @@ input{
     grid-area: footer;
     background: #FAFAFA;
 }
+h2{
+    text-align: center;
+    color: #263238;
+}
 .button--du{
     display: flex;
     flex-direction: column;
